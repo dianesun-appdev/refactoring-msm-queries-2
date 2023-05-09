@@ -11,6 +11,10 @@
 #  updated_at :datetime         not null
 #
 class Actor < ApplicationRecord
+  has_many(:characters)
+
+  has_many(:filmography , through: "characters", source: "movie")
+
   def characters
     key = self.id
 
@@ -30,5 +34,4 @@ class Actor < ApplicationRecord
 
     return the_many
   end
-
 end
